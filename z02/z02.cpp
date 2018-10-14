@@ -7,8 +7,8 @@ const double* aver(const double* arr, size_t size, double& average) {
     }
 
     average /= size;
-
-    return average;    
+    
+    return &arr[0];
 }
     
 int main () {
