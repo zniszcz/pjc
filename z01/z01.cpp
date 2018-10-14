@@ -16,9 +16,56 @@ void zadanie1() {
     cout << "\nTwoje bmi to: " << bmi << "\n";
 }
 
+void zadanie2() {
+    // Usuń poniższą linijkę aby zobaczyć kompilację bez GETMIN
+    #define GETMIN
+
+    // Usuń poniższą linijkę aby zobaczyć kompilację bez GETMAX
+    #define GETMAX
+
+    #ifndef GETMAX && !defined(GETMIN)
+        #error
+    #endif
+
+        int l1, l2, l3;
+        
+        cout << "Prosze podac 3 liczby:";
+        cin >> l1 >> l2 >> l3;
+
+    #ifdef GETMAX
+        int max = l1;
+
+        if (max < l2) { 
+            max = l2;
+        }
+
+        if (max < l3) {
+            max = l3;
+        }
+        
+        cout << "Najwieksza liczba to " << max << "\n";
+
+    #endif
+
+    #ifdef GETMIN
+        int min = l1;
+        
+        if (min > l2) {
+            max = l2;
+        }
+
+        if (min > l3) { 
+            max = l3;
+        }
+
+        cout << "Najmniejsza liczba to " << min << "\n";
+    #endif
+}
+
 int main() {
 
-    zadanie1();
-    
+    // zadanie1();
+    // zadanie2();
+
     return 0;
 }
