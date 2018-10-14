@@ -7,8 +7,21 @@ const double* aver(const double* arr, size_t size, double& average) {
     }
 
     average /= size;
+
+    double diff[size];
+
+    double theLeastDifference = std::abs(average - arr[0]);
+    int theLeastDifferenceIndex = 0;
+
+    for (int j = 0; j < size; j++) {
+        double localDiff = std::abs(average - arr[j]);
+        if (localDiff < theLeastDifference) {
+            theLeastDifference = localDiff;
+            theLeastDifferenceIndex = j;
+        }
+    }
     
-    return &arr[0];
+    return &arr[theLeastDifferenceIndex];
 }
     
 int main () {
