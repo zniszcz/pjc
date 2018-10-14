@@ -17,26 +17,26 @@ Napisz zestaw funkcji do badania liczb pierwszych i dzielników liczb.
 
 * `bool isPrime(int n)` sprawdza, czy podana liczba jest pierwsza;
 * `void printDivisors(int n)` wypisuje wszystkie dzielniki podanej liczby naturalnej (łącznie z jedynką i samą liczbą);
-* `int numDivisors(int n)` zwraca liczbę dzielników podanej jako argument liczby naturalnej `N` (łącznie z jedynką i samą liczbą `N`);
+* `int numDivisors(int n)` zwraca liczbę dzielników podanej jako argument liczby naturalnej N (łącznie z jedynką i samą liczbą N);
 * `int gdc(int m, int n)` znajduje największy wspólny dzielnik podanych dwóch liczb używając algorytmu Euklidesa (Księga VII i X *Elementów*):
 
 Dla danych a, b ∈ N:
-    * Dopóki a != b: większą z liczb a, b pomniejsz o wartość mniejszej
+    * Dopóki `a != b`: większą z liczb a, b pomniejsz o wartość mniejszej
     * Zwróć a
 * `int phi(int n)` zwraca dla danej liczby naturalnej N ilość wszystkich liczb z zakresu [1, N) względnie pierwszych z N (dla których największy wspólny dzielnik z N wynosi 1). Jest to słynna funkcja φ Eulera. Na przykład φ(10) = 4, bo tyle jest liczb naturalnych mniejszych od 10 i względnie pierwszych z 10 (są to liczby 1, 3, 7 i 9).
 
 ## Zadanie 3
 
 Napisz funkcję o prototypie
-```
+``` C++
 const double* aver(const double* arr,
     size_t size, double& average);
 ```
-która pobiera tablicę liczb typu double i jej wymiar oraz zmienną average typu double przez referencję. Zadaniem funkcji jest wstawienie do zmiennej average średniej arytmetycznej elementów tablicy oraz zwrócenie wskaźnika do tego elementu tablicy, którego wartość jest najbliższa średniej.
+która pobiera tablicę liczb typu double i jej wymiar oraz zmienną `average` typu `double` przez referencję. Zadaniem funkcji jest wstawienie do zmiennej `average` średniej arytmetycznej elementów tablicy oraz zwrócenie wskaźnika do tego elementu tablicy, którego wartość jest najbliższa średniej.
 
 Na przykład następujący program:
 
-```
+``` C++
 #include <iostream>
 #include <cmath>
 
@@ -63,7 +63,7 @@ powinien wypisać
 
 ## Zadanie 4
 Napisz funkcję
-```
+``` C++
 void minMaxRep(int a[], size_t size, int& mn, size_t& in,
     int& mx, size_t& ix);
 ```
@@ -71,7 +71,7 @@ void minMaxRep(int a[], size_t size, int& mn, size_t& in,
 która pobiera tablicę `int`ów a, jej wymiar `size` oraz, przez referencje, cztery zmienne, do których wpisany ma być wynik działania funkcji: `mn`, `in`, `mx`, `ix`. Funkcja znajduje wartości najmniejszego i największego elementu tablicy i wypisuje je do zmiennych `mn` i `mx`, a do `in` i `ix` wypisuje odpowiednio liczbę wystąpień tej najmniejszej i największej wartości w całej tablicy.
 
 Na przykład program
-```
+``` C++
 #include <iostream>
 
 void minMaxRep(int a[], size_t size,
