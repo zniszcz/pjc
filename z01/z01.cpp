@@ -62,10 +62,48 @@ void zadanie2() {
     #endif
 }
 
+void zadanie3() {
+    int l1, l2, l3;
+    int height;
+
+    cout << "Enter three non-negative numbers: ";
+    cin >> l1 >> l2 >> l3;
+    
+    height = (l1 > l2) ? l1 : l2;
+    
+    if (height < l3) {
+        height = l3;
+    }
+
+    for (int i = height; i > 0; i--) {
+        
+        if (l1 >= i) { 
+            cout << '*';
+        } else {
+            cout << ' ';
+        }
+
+        if (l2 >= i) {
+            cout << '*';
+        } else {
+            cout << ' ';
+        }
+
+        if (l3 >= i) {
+            cout << '*';
+        } else {
+            cout << ' ';
+        }
+
+        cout << endl;
+    }
+}
+
 int main() {
 
     // zadanie1();
     // zadanie2();
+    // zadanie3();
 
     return 0;
 }
