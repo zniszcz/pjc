@@ -17,13 +17,13 @@ void zadanie1() {
 }
 
 void zadanie2() {
-    // Usuń poniższą linijkę aby zobaczyć kompilację bez GETMIN
+    // Zakomentuj poniższą linijkę aby zobaczyć kompilację bez GETMIN
     #define GETMIN
 
-    // Usuń poniższą linijkę aby zobaczyć kompilację bez GETMAX
+    // Zakomentuj poniższą linijkę aby zobaczyć kompilację bez GETMAX
     #define GETMAX
 
-    #ifndef GETMAX && !defined(GETMIN)
+    #if !defined(GETMAX) && !defined(GETMIN)
         #error
     #endif
 
@@ -99,11 +99,76 @@ void zadanie3() {
     }
 }
 
+// Helper do zadania 4
+int sumOfDigits(int n) {
+    int sum = 0;
+
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+
+    return sum;
+}
+
+void zadanie4() {
+    // Odkomentuj poniższą linijkę aby zobaczyć kompilację po polsku
+    #define POL
+
+    // Odkomentuj poniższą linijkę aby zobaczyć kompilację po angielsku
+    // #define ENG
+
+    #if defined ENG && defined POL
+        #error Możesz wybrać tylko jeden język
+    #elif !defined(ENG) && !defined(POL)
+        #error Musisz wybrać conajmniej jeden język
+    #endif
+
+    int max, maxSum, input;
+    bool passedZero = false;
+
+    max = 0;
+    maxSum = 0;
+
+    while (!passedZero) {
+        #ifdef ENG
+            cout << "Enter a natural number (0 if done):";
+        #endif
+
+        #ifdef POL
+            cout << "Wpisz liczbe naturalną (0 by zakończyć):";
+        #endif
+
+        cin >> input;
+
+        if (input == 0) {
+            passedZero = true;
+            break;
+        }
+
+        int currentSum = sumOfDigits(input);
+        
+        if (currentSum > maxSum) {
+            max = input;
+            maxSum = currentSum;
+        }
+    }
+
+    #ifdef ENG
+        cout << "Max sum of digits was " << maxSum << " for " << max << endl;
+    #endif
+
+    #ifdef POL
+        cout << "Maksymalna suma cyfr wynosila " << maxSum << " dla liczby " << max << endl;
+    #endif
+}
+
 int main() {
 
     // zadanie1();
     // zadanie2();
     // zadanie3();
+    zadanie4();
 
     return 0;
 }
