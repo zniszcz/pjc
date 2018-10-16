@@ -20,7 +20,7 @@ void zadanie2() {
     // Zakomentuj poniższą linijkę aby zobaczyć kompilację bez GETMIN
     #define GETMIN
 
-    // Zakomentuj poniższą linijkę aby zobaczyć kompilację bez GETMAX
+    // Zakomentuj poniższą linijkę aby zobaczyć kompilację bez GETMAX asdsdsda
     #define GETMAX
 
     #if !defined(GETMAX) && !defined(GETMIN)
