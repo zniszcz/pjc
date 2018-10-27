@@ -1,34 +1,35 @@
 #include <iostream>
 
 int main() {
-    // Fail - sprawdzam sekwencję najmniejszych liczb a nie najczęstszych
 
     using std::cout;
     using std::cin;
     
-    int wasZeroGiven = false;
-    int min;
-    int minCount = 0;
+    int lastNumber = 0;
+    int lastRepeated = 0;
+    int maxRepeated = 0;
 
-    while(!wasZeroGiven) {
+    while(true) {
         int i;
+
         cout << "Podaj liczbę całkowitą (zero aby zakończyć):";
         cin >> i;
 
         if (i == 0) {
-            wasZeroGiven = true;
             break;
         }
 
-        if (i < min) {
-            min = i;
-            minCount = 1;
+        if (i == lastNumber) {
+            lastRepeated++;
+        } else {
+            lastRepeated = 1;
+            lastNumber = i;
         }
-
-        if (i == min) {
-            minCount++;
+        
+        if (lastRepeated > maxRepeated) {
+            maxRepeated = lastRepeated;
         }
     }
 
-    cout << "Najdłuższa sekwencja: " << minCount << " liczba " << min;
+    cout << "Najdłuższa sekwencja: " << maxRepeated << " liczba " << lastNumber;
 }
