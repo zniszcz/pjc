@@ -41,13 +41,20 @@ int gdc(int m, int n) {
 }
 
 int phi(int n) {
+    int count = 0;
 
-    return 0;
+    for (int i = 1; i < n; i++) {
+        if (gdc(n, i) == 1) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
 int main() {
 
-    cout << gdc(90, 25);
+    cout << phi(10);
 
     return 0;
 }
