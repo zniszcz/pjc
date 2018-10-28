@@ -33,8 +33,11 @@ int numDivisors(int n) {
 }
 
 int gdc(int m, int n) {
-
-    return 0;
+    if (m != n) {
+        bool mig = m > n; // mIsGreater
+        return gdc((mig) ? n : m, (mig) ? m - n : n - m);
+    }
+    return m;
 }
 
 int phi(int n) {
@@ -44,7 +47,7 @@ int phi(int n) {
 
 int main() {
 
-    cout << numDivisors(10);
+    cout << gdc(90, 25);
 
     return 0;
 }
