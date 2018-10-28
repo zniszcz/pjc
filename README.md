@@ -1,0 +1,1 @@
+Kolokwium na kartkach + zadania do oceny.
