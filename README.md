@@ -680,9 +680,11 @@ cout << *(&s[3]-2) << endl;
 
 a) W  
 b) X  
-c) V  
+__c) V__  
 d) Y  
 e) U  
+
+[dowód](https://ideone.com/5HpWvm)
 
 ---
 
@@ -700,7 +702,7 @@ Które z poniszych wyrazeń odnosi się do drugiej oceny piątego studenta:
 
 a) `s.Student[4].oceny[1];`  
 b) `s.oceny[4][1];`  
-c) `s[4].oceny[1];`  
+__c) `s[4].oceny[1];`__  
 d) `s[4].Student.oceny[1];`  
 e) `s.Student.oceny[4][1];`  
 f) `s.oceny[1].Student[4];`  
@@ -725,8 +727,10 @@ mozliwe jest przypisanie:
 a) f=f4;  
 b) f=f5;  
 c) f=f2;  
-d) f=f3;  
+__d) f=f3;__  
 e) f=f1;  
+
+[dowód](https://ideone.com/V2tLUt)
 
 ---
 
@@ -744,10 +748,12 @@ sizeof(double) = 8;
 ```
 
 Wartością `sizeof(tab)` jest:
-a) 8  
+__a) 8__  
 b) 80  
 c) 40  
 d) 4  
+
+[dowód](https://ideone.com/pQy7kk)
 
 ---
 
@@ -773,7 +779,9 @@ a) 1,3,5
 b) 3,4  
 c) 1,5  
 d) 1,2  
-e) 1,4,5  
+__e) 1,4,5__  
+
+[dowód](https://ideone.com/Yl4Vlq)
 
 ---
 
@@ -811,10 +819,12 @@ int main() {
 
 spośród czterech ostatnich lini prawidłowa jest tylko linia:
 
-a) (d)  
-b) (c)  
-c) (a)  
-d) (b)  
+a) ( d )  
+__b) ( c )__  
+c) ( a )  
+d) ( b )  
+
+[dowód](https://ideone.com/2GxHhH)
 
 ---
 
@@ -867,4 +877,4 @@ to do nazwy `cout` trzeba sie dnosic przez:
 a) `std->cout`  
 b) `std.cout`  
 c) `std(cout)`  
-d) `std::cout`  
+__d) `std::cout`__  
