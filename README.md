@@ -93,6 +93,13 @@ e) U
 
 [dowód](https://ideone.com/qEklpd)
 
+### Wytłumaczenie
+1. `const char* s` - tablica jest wskaźnikiem
+2. `s[3]` - chodzi o wartość czwartego elementu tablicy (`X`)
+3. `&s[3]` - chodzi o adres czwartego elementu tablicy
+4. `&s[3]-2` - adres elementu o 2 wcześniejszego
+5. `*(&s[3]-2)` - wartość elementu z adresu z poprzedniego punktu
+
 ---
 
 6. Jeśli funkcja ma jeden parametr z wartością domyślną to musi to być:
@@ -100,7 +107,7 @@ e) U
 a) parametr jedyny  
 b) taka sytuacja jest niemożliwa  
 c) parametr pierwszy  
-d) parametr ostatni  
+__d) parametr ostatni__  
 
 ---
 
@@ -128,6 +135,9 @@ e) żadne z nich
 __f) trzecie__  
 
 [dowód](https://ideone.com/Vji8dP)
+
+### Wytłumaczenie
+Argument `int* t[]` oznacza wskaźnik na wskaźnik(tablica to wskaźnik).
 
 ---
 
@@ -209,17 +219,35 @@ Napisz funkcję, która zwraca ilość liter w imieniu tej z osób reprezentowan
 ``` cpp
 int fun(Osoba& a, Osoba* b) {
 
-
-
+	if (strlen(a.nazwisko) > strlen(b->nazwisko)) { // a ma dluzsze nazwisko
+		return strlen(a.nazwisko);
+	} else {
+		return strlen(b->nazwisko);
+	}
 }
 ```
 
 2. Napisz szablon funkcji pobierającej tablicę i jej wymiar a zwracającej referencję do najmniejszego elementu tablicy:
 
 ``` cpp
-template................................ {
+template <class T>
+T& klopsztanga (T tab[], int n) {
 
+	T tmp = tab[0];
 
+	int i = 0;
+	
+	int index = 0;
+
+	while ( i < n) {
+		if (tab[i] < tmp) {
+			tmp = tab[i];
+			index = i;
+		}
+		i++;
+	}
+
+	return (tab[index]);
 }
 ```
 
@@ -310,11 +338,11 @@ może się powieść:
 a) 4  
 b) 1  
 c) 2  
-d) 3  
-__e) żadne z nich__  
+__d) 3__  
+e) żadne z nich  
 f) wszystkie  
 
-[dowód](https://ideone.com/8KFWVS)
+[dowód](https://ideone.com/2cCFPE)
 
 ---
 
@@ -328,13 +356,13 @@ f) wszystkie
 
 może się powieść:
 
-a) tylko 3  
+__a) tylko 3__  
 b) wszystkie  
 c) 1 i 5  
-__d) żadne z nich__  
+d) żadne z nich  
 e) 2 i 4  
 
-[dowód](https://ideone.com/IOgSq7)
+[dowód](https://ideone.com/BabRvC)
 
 ---
 
@@ -353,7 +381,7 @@ e) true false false true
 8. Jeśli funkcja ma jeden parametr z wartością domyślną to musi to być:
 
 a) taka sytuacja jest niemożliwa  
-b) parametr ostatni  
+__b) parametr ostatni__  
 c) parametr jedyny  
 d) parametr pierwszy  
 
@@ -362,7 +390,7 @@ d) parametr pierwszy
 9. Funkcja `rekur` zdefiniowana jest następująco
 
 ``` cpp
-void rekur(cont char* nap) {
+void rekur(const char* nap) {
     if (*nap != 'D') {
         rekur(nap+1);
         cout << *nap;
@@ -456,10 +484,10 @@ może się powieść:
 a) wszystkie  
 b) tylko 3  
 c) 1 i 5  
-__d) żadne z nich__  
-e) 2 i 4  
+d) żadne z nich  
+__e) 2 i 4__  
 
-[dowód](https://ideone.com/1jTDFw)
+[dowód](https://ideone.com/3ChxAl)
 
 ---
 
@@ -531,12 +559,12 @@ spośród następujących czterech wywołań
 prawidłowe są tylko
 
 a) trzy z nich  
-b) wszystkie cztery  
+__b) wszystkie cztery__  
 c) dwa z nich  
-__d) żadne z nich__  
+d) żadne z nich  
 e) jedno z nich  
 
-[dowód](https://ideone.com/Ej0vrR)
+[dowód](https://ideone.com/Zp2TEf)
 
 ---
 
@@ -597,12 +625,15 @@ __e) `f=f3;`__
 
 19. Po instrukcji `double* tab = new double[10];` zakładając, że `sizeof(int) == sizeof(void*) == 4;` a `sizeof(double) == 8;` wartością `sizeof(tab)` jest:
 
-a) 4  
+__a) 4__  
 b) 40  
-__c) 8__  
+c) 8  
 d) 80  
 
-[dowód](https://ideone.com/wsIfIa)
+### Uzasadnienie
+`sizeof(int) == sizeof(void*) == 4;` oznacza, że odpalamy program na 32bitowej maszynie.
+
+Rozmiar wskaźnika jest 32bitowy czyli 4 bajty na tej maszynie.
 
 ---
 
@@ -635,7 +666,11 @@ Napisz funkcję która pobiera dwa odcinki, przez wskaźnik i referencję, a zwr
 
 const Interval* longer(const Interval* ps, const Interval& rs) {
 
-    // ...
+    if ((ps->b - ps->a) > (rs.b - rs.a)) { // ps jest dłuższy
+		return ps;
+	} else {
+		return &rs;
+	}
 
 }
 
@@ -661,9 +696,18 @@ a `head` będzie wskaźnikiem do pierwszego elementu listy złożonej z co najmn
 ``` cpp
 
 void fun(Node* head) {
+	Node * tmp = head;
 
-    // ...
+	while (tmp != NULL) {
+		tmp = tmp->next;
+	}
 
+	int tmp3 = head->data;
+
+	head->data = tmp->data;
+
+	tmp->data = tmp3;
+	
 }
 
 ```
@@ -748,12 +792,13 @@ sizeof(double) = 8;
 ```
 
 Wartością `sizeof(tab)` jest:
-__a) 8__  
+a) 8  
 b) 80  
 c) 40  
-d) 4  
+__d) 4__
 
-[dowód](https://ideone.com/pQy7kk)
+### Uzasadnienie
+Rozważamy architekturę 32bitową (wiadomo to ponieważ rozmiar wskaźnika inta i voida to 4), więc rozmiar wskaźnika dowolnego typu to 4.
 
 ---
 
@@ -793,11 +838,14 @@ void F(int& n);
 
 a `p` jest typu `int*`, to wywołanie tej funkcji może mieć postać:
 
-a) `F(*p);`  
+__a) `F(*p);`__  
 b) `F(p*);`  
 c) `F(p&);`  
 d) `F(p);`  
 e) `F(&p);`  
+
+### Uzasadnienie
+Jeżeli funkcja oczekuje referencji, to trzeba ją przekazać jako wartość pod zmienną.
 
 ---
 
@@ -820,9 +868,9 @@ int main() {
 spośród czterech ostatnich lini prawidłowa jest tylko linia:
 
 a) ( d )  
-__b) ( c )__  
+b) ( c )  
 c) ( a )  
-d) ( b )  
+__d) ( b )__  
 
 [dowód](https://ideone.com/2GxHhH)
 
@@ -855,7 +903,7 @@ Prawidłowe są tylko:
 a) zadne z nich  
 b) dwa z nich  
 c) trzy z nich  
-d) wszystkie cztery  
+__d) wszystkie cztery__  
 e) jedno z nich  
 
 ---
@@ -877,4 +925,4 @@ to do nazwy `cout` trzeba sie dnosic przez:
 a) `std->cout`  
 b) `std.cout`  
 c) `std(cout)`  
-__d) `std::cout`__  
+__d) `std::cout`__
