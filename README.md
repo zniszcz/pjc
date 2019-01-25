@@ -1,4 +1,4 @@
-# Strona 1 / 6
+﻿# Strona 1 / 6
 
 1. Zakładając, że klasa B została zdefiniowana wcześniej, następująca definicja klasy A:
 
@@ -12,10 +12,12 @@ struct A {
 
 mogłaby być prawidłowa po skreśleniu linii:
 
-a) 1  
+__a) 1__  
 b) może być prawidłowa bez skreśleń  
 c) 3  
 d) 2  
+
+[dowód](https://ideone.com/pcowNb)
 
 ---
 
@@ -28,10 +30,14 @@ d) 2
     int k = 7, &m = k; // d
 ```
 
-a) b, d  
+prawidłowe są tylko
+
+__a) b, d__  
 b) a, c  
 c) a, b  
 d) c, d  
+
+[dowód](https://ideone.com/TfHYye)
 
 ---
 
@@ -39,14 +45,17 @@ d) c, d
 
 ``` cpp
 int tab[] = {1, 2, 3, 4, 5}, *t = &tab[1];
+cout << t[2] << " " << t[4];
 ```
 
 spowoduje wydrukowanie:
 
 a) liczb 3 i 5  
 b) dwóch przypadkowych wartości  
-c) liczby 4 i jakiejś przypadkowej wartości  
+__c) liczby 4 i jakiejś przypadkowej wartości__
 d) fragment wogóle się nie skompiluje  
+
+[dowód](https://ideone.com/4HXQKk)
 
 ---
 
@@ -54,15 +63,17 @@ d) fragment wogóle się nie skompiluje
 
 `!(x>10)`,  
 `x<=5||y<15`,  
-`x!=5&&ky!=z`,  
+`x!=5&&y!=z`,  
 `x>z||x+y>=z`  
 
 będą kolejno:
 
 a) true, true, true, false  
 b) false, false, true, true  
-c) true, false, true, true  
+__c) true, false, true, true__  
 d) true, false, true, false  
+
+[dowód](https://ideone.com/Q8roUA)
 
 ---
 
@@ -71,14 +82,16 @@ d) true, false, true, false
 
 ``` cpp
 const char* s = "UVWXYZ";
-cout << *(ks[3]-2) << endl;
+cout << *(&s[3]-2) << endl;
 ```
 
 a) W  
 b) X  
-c) V  
+__c) V__  
 d) Y  
 e) U  
+
+[dowód](https://ideone.com/qEklpd)
 
 ---
 
@@ -112,7 +125,9 @@ b) wszystkie
 c) czwarte  
 d) pierwsze  
 e) żadne z nich  
-f) trzecie  
+__f) trzecie__  
+
+[dowód](https://ideone.com/Vji8dP)
 
 ---
 
@@ -144,7 +159,7 @@ a) II
 b) IV  
 c) VI  
 d) VII  
-e) III  
+__e) III__  
 f) V  
 g) VIII  
 h) I  
@@ -157,7 +172,7 @@ h) I
 struct Point { int x, y; };
 struct Triangle { Point *A, *B, *C;};
 int main() {
-    Point a = {1, 2}, B = {2, 3};
+    Point A = {1, 2}, B = {2, 3};
     Triangle t  = {&A, &B, new Point};
     t->A->x     = t->A->y = 0;  // a
     t.A->x      = t.A->y = 0;   // b
@@ -169,10 +184,12 @@ int main() {
 spośród czterech ostatnich linii prawidłowa jest tylko linia
 
 a) d  
-b) b  
+__b) b__  
 c) c  
 d) a  
-  
+
+[dowód](https://ideone.com/pWWtrE)  
+
 ---
 
 # Strona 2 / 6
@@ -213,8 +230,10 @@ template................................ {
 a) 3  
 b) instrukcja jest nielegalna  
 c) wartość ta jest nieokreślona  
-d) 4  
+__d) 4__  
 e) 2  
+
+[dowód](https://ideone.com/wdqTEn)
 
 ---
 
@@ -232,7 +251,9 @@ prawidłowe są tylko:
 a) a, b  
 b) c, d  
 c) a, c  
-d) b, d  
+__d) b, d__  
+
+[dowód](https://ideone.com/o3LzQf)
 
 ---
 
@@ -248,15 +269,17 @@ prawidłowe są wyłącznie:
 a) 2, 3, 4  
 b) 1, 3  
 c) żadna  
-d) 1, 3, 4  
+__d) 1, 3, 4___  
 e) wszystkie  
+
+[dowód](https://ideone.com/NfoeZy)
 
 ---
 
 4. Wykonanie instrukcji
 
 ``` cpp
-int n=2, *pn=&k, k=*pn+1, &rk=k;
+int n=2, *pn=&n, k=*pn+1, &rk=k;
 --k;
 cout << --rk << endl;
 ```
@@ -265,21 +288,22 @@ spowoduje wypisanie na ekranie:
 
 a) liczby 2  
 b) fragmnet nie skompiluje się  
-c) liczby 1  
+__c) liczby 1__  
 d) adresu zmiennej `rk`  
 e) liczby 3  
 
+[dowód](https://ideone.com/tGijfj)
+
 ---
 
-5. Zmienne `n`, `pn`, `rn` zdefiniowane są instrukcją `int n = 1, *pn = &n, &rn = *pn;`, a funkcja `fun` ma prototyp `int fun(int*);`
+5. Zmienne `n`, `pn`, `rn` zdefiniowane są instrukcją `int n = 1, *pn = &n, &rn = n;`, a funkcja `fun` ma prototyp `int fun(int* t[]);`
 
 Które z wywołań
 
-(1) `pn = fun(n);`  
-(2) `rn = fun(*pn);`  
-(3) `rn = fun(&n);`  
-(4) `*pa = fun(*pn);`  
-(5) `n = fun(*n);`  
+(1) `fun(n);`  
+(2) `fun(pn);`  
+(3) `fun(&pn);`  
+(4) `fun(rn);`  
   
 może się powieść:
 
@@ -287,8 +311,10 @@ a) 4
 b) 1  
 c) 2  
 d) 3  
-e) żadne z nich  
+__e) żadne z nich__  
 f) wszystkie  
+
+[dowód](https://ideone.com/8KFWVS)
 
 ---
 
@@ -305,18 +331,22 @@ może się powieść:
 a) tylko 3  
 b) wszystkie  
 c) 1 i 5  
-d) żadne z nich  
+__d) żadne z nich__  
 e) 2 i 4  
+
+[dowód](https://ideone.com/IOgSq7)
 
 ---
 
-7. Po definicjach `int x{10}, y{15}, z{20};` wartościami wyrażeń `!(x>10)`, `x<=5||v<15`, `x>=z||x+y>=z` będą kolejno:
+7. Po definicjach `int x{10}, y{15}, z{20};` wartościami wyrażeń `!(x>10)`, `x<=5||y<15`, `x!=5&&y!=z`, `x>=z||x+y>=z` będą kolejno:
 
-a) true false true true  
+__a) true false true true__  
 b) false false true true  
 c) true false true false  
 d) true true true false  
 e) true false false true  
+
+[dowód](https://ideone.com/f276OS)
 
 ---
 
@@ -342,12 +372,14 @@ void rekur(cont char* nap) {
 
 Co zostanie wydrukowane po wywołaniu `rekur("ABCD")`?
 
-a) CBA  
+__a) CBA__  
 b) ABCD  
 c) ABCDCBA  
 d) DCBA  
 e) D  
 f) ABC  
+
+[dowód](https://ideone.com/uJKebM)
 
 ---
 
@@ -365,8 +397,10 @@ mogłaby być prawidłowa po skreśleniu linii:
 
 a) 3  
 b) może być prawidłowa bez skreślania linii  
-c) 1  
+__c) 1__  
 d) 2  
+
+[dowód](https://ideone.com/DToLo4)
 
 ---
 
@@ -380,9 +414,11 @@ cout << t[2] << " " << t[4] << endl;
 spowoduje wydrukowanie
 
 a) dwóch przypadkowych wartości  
-b) liczby 4 i jakiejś przypadkowej wartości  
+__b) liczby 4 i jakiejś przypadkowej wartości__  
 c) liczb 3 i 5  
 d) fragment wogóle się nie skompiluje  
+
+[dowód](https://ideone.com/HCHyIi)
 
 ---
 
@@ -401,7 +437,9 @@ poprawnymi instrukcjami są tylko
 a) 2, 3, 5  
 b) 1, 2, 5  
 c) 2, 5  
-d) 2, 4, 5  
+__d) 2, 4, 5__  
+
+[dowód](https://ideone.com/lPD5FA)
 
 ---
 
@@ -418,8 +456,10 @@ może się powieść:
 a) wszystkie  
 b) tylko 3  
 c) 1 i 5  
-d) żadne z nich  
+__d) żadne z nich__  
 e) 2 i 4  
+
+[dowód](https://ideone.com/1jTDFw)
 
 ---
 
@@ -434,16 +474,18 @@ prawidłowe są tylko:
 
 a) 2, 3, i 4  
 b) 1 i 3  
-c) 1, 3 i 4  
+__c) 1, 3 i 4__  
 d) wszystkie  
 e) żadna  
+
+[dowód](https://ideone.com/1a6aWU)
 
 ---
 
 13. Jeżeli użyliśmy dyrektywy `#include<iostream>` ale __*nie*__ użyliśmy `using namespace std;`, to do nazwy `cout` trzeba się odnieść poprzez:
 
 a) `std->cout`  
-b) `std::cout`  
+__b) `std::cout`__  
 c) `std.cout`  
 d) `std(cout)`  
 
@@ -452,7 +494,7 @@ d) `std(cout)`
 14. Funkcja `rekur` zdefiniowana jest następująco
 
 ``` cpp
-void rekur(cont char* nap) {
+void rekur(const char* nap) {
     if (*nap != 'D') {
         rekur(nap+1);
         cout << *nap;
@@ -466,12 +508,14 @@ a) DCBA
 b) D  
 c) ABCD  
 d) ABCDCBA  
-e) CBA  
+__e) CBA__  
 f) ABC  
+
+[dowód](https://ideone.com/bwY1fk)
 
 ---
 
-15. Jeśli zdefiniowana jest funkcja `F` o deklaracji `void F(int*, int = 0, double - 0);` to po
+15. Jeśli zdefiniowana jest funkcja `F` o deklaracji `void F(int*, int = 0, double = 0);` to po
 
 ``` cpp
 int k = 7, *pk = &k;
@@ -489,8 +533,10 @@ prawidłowe są tylko
 a) trzy z nich  
 b) wszystkie cztery  
 c) dwa z nich  
-d) żadne z nich  
+__d) żadne z nich__  
 e) jedno z nich  
+
+[dowód](https://ideone.com/Ej0vrR)
 
 ---
 
@@ -500,7 +546,9 @@ a) 3
 b) instrukcja jest nielegalna  
 c) 2  
 d) wartość ta jest nieokreślona  
-e) 4  
+__e) 4__  
+
+[dowód](https://ideone.com/Xahe5O)
 
 ---
 
@@ -514,11 +562,13 @@ cout << --rk << endl;
 
 spowoduje wypisanie na ekranie
 
-a) liczby 1   
+__a) liczby 1__   
 b) fragment się nie skompiluje  
 c) liczby 2  
 d) adresu zmiennej `rk`  
 e) liczby 3  
+
+[dowód](https://ideone.com/REZioK)
 
 ---
 
@@ -539,7 +589,9 @@ a) `f=f5;`
 b) `f=f2;`  
 c) `f=f4;`  
 d) `f=f1;`  
-e) `e=f3;`  
+__e) `f=f3;`__  
+
+[dowód](https://ideone.com/KZNb0S)
 
 ---
 
@@ -547,8 +599,10 @@ e) `e=f3;`
 
 a) 4  
 b) 40  
-c) 8  
+__c) 8__  
 d) 80  
+
+[dowód](https://ideone.com/wsIfIa)
 
 ---
 
@@ -556,9 +610,11 @@ d) 80
 
 a) `F(&k);`  
 b) `F(*k);`  
-c) `F(k);`  
+__c) `F(k);`__  
 d) `F(k&);`  
 e) `F(k*);`  
+
+[dowód](https://ideone.com/mrsSPq)
 
 ---
 
